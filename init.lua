@@ -271,7 +271,7 @@ require('lazy').setup({
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'catppuccin-mocha'
+      vim.cmd.colorscheme 'tokyonight-night'
       vim.opt.fillchars = { eob = ' ' }
     end,
   },
@@ -299,7 +299,7 @@ require('lazy').setup({
 
       require('lualine').setup {
         options = {
-          theme = 'catppuccin-mocha',
+          theme = 'tokyonight-night',
           section_separators = { left = '', right = '' },
           component_separators = { left = '', right = '' },
           globalstatus = true,
