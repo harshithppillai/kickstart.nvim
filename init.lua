@@ -245,6 +245,14 @@ rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+  {
+    'lervag/vimtex',
+    lazy = false,
+    init = function()
+      vim.g.vimtex_view_method = 'zathura'
+      vim.g.vimtex_compiler_method = 'latexmk'
+    end,
+  },
   { 'Isrothy/neominimap.nvim', name = 'Minimap NeoVim' },
   { 'catppuccin/nvim', name = 'catppuccin', lazy = false },
   { 'lervag/vimtex', lazy = false },
