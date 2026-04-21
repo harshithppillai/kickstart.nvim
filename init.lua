@@ -105,7 +105,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.o.mouse = 'a'
+vim.o.mouse = ''
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
 vim.opt.wrap = false
@@ -253,7 +253,6 @@ require('lazy').setup({
       vim.g.vimtex_compiler_method = 'latexmk'
     end,
   },
-  { 'Isrothy/neominimap.nvim', name = 'Minimap NeoVim' },
   { 'catppuccin/nvim', name = 'catppuccin', lazy = false },
   { 'lervag/vimtex', lazy = false },
   { 'sharkdp/fd', name = 'fd' },
@@ -574,7 +573,7 @@ require('lazy').setup({
       { 'j-hui/fidget.nvim', opts = {} },
 
       -- Allows extra capabilities provided by blink.cmp
-      'saghen/blink.cmp',
+      { 'saghen/blink.cmp', build = 'cargo +nightly build --release' },
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -1053,7 +1052,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
