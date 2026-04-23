@@ -257,7 +257,6 @@ require('lazy').setup({
     end,
   },
   { 'catppuccin/nvim', name = 'catppuccin', lazy = false },
-  { 'lervag/vimtex', lazy = false },
   { 'sharkdp/fd', name = 'fd' },
   -- { 'mistricky/codesnap.nvim', tag = 'v2.0.0' },
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
@@ -281,10 +280,7 @@ require('lazy').setup({
     name = 'moonfly',
     lazy = false,
     priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'tokyonight-night'
-      vim.opt.fillchars = { eob = ' ' }
-    end,
+    config = function() vim.opt.fillchars = { eob = ' ' } end,
   },
 
   -- 2. 📊 Lualine (Status Line Configuration)
@@ -968,11 +964,15 @@ require('lazy').setup({
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('tokyonight').setup {
+        transparent = true,
         styles = {
+          sidebars = 'transparent',
+          floats = 'transparent',
           comments = { italic = false }, -- Disable italics in comments
         },
       }
 
+      vim.cmd.colorscheme 'tokyonight-night'
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
