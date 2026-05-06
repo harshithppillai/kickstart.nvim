@@ -105,7 +105,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.o.mouse = 'a'
+vim.o.mouse = ''
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
 vim.opt.wrap = false
@@ -306,7 +306,7 @@ require('lazy').setup({
 
       require('lualine').setup {
         options = {
-          theme = 'tokyonight-night',
+          theme = 'auto',
           section_separators = { left = '', right = '' },
           component_separators = { left = '', right = '' },
           globalstatus = true,
@@ -968,8 +968,9 @@ require('lazy').setup({
         styles = {
           sidebars = 'transparent',
           floats = 'transparent',
-          comments = { italic = false }, -- Disable italics in comments
+          comments = { italic = true }, -- Disable italics in comments
         },
+        on_highlights = function(hl, c) hl.CursorLine = { bg = 'none' } end,
       }
 
       vim.cmd.colorscheme 'tokyonight-night'
