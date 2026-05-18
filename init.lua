@@ -108,7 +108,7 @@ vim.o.relativenumber = true
 vim.o.mouse = ''
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
-vim.opt.wrap = false
+vim.opt.wrap = true
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -254,6 +254,26 @@ require('lazy').setup({
     init = function()
       vim.g.vimtex_view_method = 'zathura'
       vim.g.vimtex_compiler_method = 'latexmk'
+    end,
+  },
+  {
+    'NvChad/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup {
+        user_default_options = {
+          names = false, -- Highlight color names like "Blue", "Red", etc.
+          RGB = true, -- #RGB hex codes
+          RRGGBB = true, -- #RRGGBB hex codes
+          RRGGBBAA = true, -- #RRGGBBAA hex codes
+          AARRGGBB = true, -- #AARRGGBB hex codes
+          rgb_fn = true, -- CSS rgb() and rgba() functions
+          hsl_fn = true, -- CSS hsl() and hsla() functions
+          css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+          css_fn = true, -- Enable all CSS functions: rgb_fn, hsl_fn
+          -- Available modes: foreground, background,  virtualtext
+          mode = 'background', -- Set the display mode!
+        },
+      }
     end,
   },
   { 'catppuccin/nvim', name = 'catppuccin', lazy = false },
