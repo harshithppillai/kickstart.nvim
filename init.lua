@@ -166,6 +166,8 @@ vim.o.guicursor = 'a:block'
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+vim.opt.termguicolors = true
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -986,17 +988,45 @@ require('lazy').setup({
       require('tokyonight').setup {
         transparent = true,
         styles = {
+          bold = true,
+          italic = true,
           sidebars = 'transparent',
           floats = 'transparent',
           comments = { italic = true }, -- Disable italics in comments
         },
         on_highlights = function(hl, c) hl.CursorLine = { bg = 'none' } end,
       }
-
       vim.cmd.colorscheme 'tokyonight-night'
+
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+    end,
+  },
+
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    priority = 1000,
+    config = function()
+      require('rose-pine').setup {
+        variant = 'main',
+        dark_variant = 'main',
+        styles = {
+          bold = true,
+          italic = true,
+          transparency = true,
+        },
+        enable = {
+          terminal = true,
+          legacy_highlights = true,
+          migrations = true,
+        },
+        highlight_groups = {
+          CursorLine = { bg = 'NONE' },
+          CursorLineNr = { bg = 'NONE' },
+        },
+      }
     end,
   },
 
