@@ -168,6 +168,10 @@ vim.o.confirm = true
 
 vim.opt.termguicolors = true
 
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -512,7 +516,11 @@ require('lazy').setup({
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        -- pickers = {}
+        pickers = {
+          colorscheme = {
+            enable_preview = true,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -777,6 +785,9 @@ require('lazy').setup({
         gopls = {},
         pyright = {},
         arduino_language_server = {},
+        asm_lsp = {
+          filetypes = { 'asm', 'nasm' },
+        },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -996,7 +1007,6 @@ require('lazy').setup({
         },
         on_highlights = function(hl, c) hl.CursorLine = { bg = 'none' } end,
       }
-      vim.cmd.colorscheme 'tokyonight-night'
 
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
@@ -1027,6 +1037,7 @@ require('lazy').setup({
           CursorLineNr = { bg = 'NONE' },
         },
       }
+      vim.cmd.colorscheme 'rose-pine-main'
     end,
   },
 
@@ -1104,7 +1115,7 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
+  require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
