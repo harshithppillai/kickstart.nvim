@@ -284,7 +284,21 @@ require('lazy').setup({
   },
   { 'catppuccin/nvim', name = 'catppuccin', lazy = false },
   { 'sharkdp/fd', name = 'fd' },
-  -- { 'mistricky/codesnap.nvim', tag = 'v2.0.0' },
+  {
+    'mistricky/codesnap.nvim',
+    tag = 'v2.0.0',
+    config = function()
+      require('codesnap').setup {
+        snapshot_config = {
+          watermark = {
+            content = '',
+          },
+          background = '#000000',
+          theme = 'vercel@https://raw.githubusercontent.com/Railly/one-hunter-vscode/refs/heads/main/themes/OneHunter-Vercel-color-theme.json',
+        },
+      }
+    end,
+  },
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
   -- in your plugins list
@@ -789,7 +803,7 @@ require('lazy').setup({
         asm_lsp = {
           filetypes = { 'asm', 'nasm' },
         },
-        -- rust_analyzer = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
