@@ -172,6 +172,8 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 
+vim.o.winborder = 'rounded'
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -210,6 +212,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 --
 -- vim.keymap.set('n', '<leader>as', function() vim.cmd '!picocom /dev/ttyUSB0 -b 9600' end, { desc = 'Serial Monitor' })
 -- vim.keymap.set('n', '<leader>ap', function() vim.cmd '!cat /dev/ttyUSB0 | feedgnuplot --stream --lines' end, { desc = 'Serial Plotter' })
+vim.keymap.set('n', '<leader>gt', vim.cmd.terminal, { desc = 'Enter the terminal' })
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
@@ -900,7 +903,7 @@ require('lazy').setup({
         cpp = { 'clang-format' },
         rust = { 'rustfmt' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'isort', 'black' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
@@ -975,9 +978,20 @@ require('lazy').setup({
       },
 
       completion = {
+        menu = {
+          border = 'rounded',
+          draw = { gap = 2 },
+        },
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        documentation = {
+          window = {
+            border = 'rounded',
+          },
+          auto_show = true,
+          auto_show_delay_ms = 200,
+        },
+        ghost_text = { enabled = true },
       },
 
       sources = {
@@ -1009,7 +1023,7 @@ require('lazy').setup({
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
+    priority = 000,
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('tokyonight').setup {
@@ -1053,7 +1067,7 @@ require('lazy').setup({
           CursorLineNr = { bg = 'NONE' },
         },
       }
-      vim.cmd.colorscheme 'rose-pine-main'
+      vim.cmd.colorscheme 'tokyonight-night'
     end,
   },
 
@@ -1101,7 +1115,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.config', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'rust' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
