@@ -214,6 +214,12 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set('n', '<leader>ap', function() vim.cmd '!cat /dev/ttyUSB0 | feedgnuplot --stream --lines' end, { desc = 'Serial Plotter' })
 vim.keymap.set('n', '<leader>gt', vim.cmd.terminal, { desc = 'Enter the terminal' })
 
+vim.filetype.add {
+  extension = {
+    v = 'verilog',
+  },
+}
+
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
@@ -1124,7 +1130,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.config', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'rust' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'rust', 'verilog' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
